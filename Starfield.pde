@@ -37,8 +37,8 @@ class Particle{
     r = 255;
     g = 255;
     b = 255;
-    size = 10;
-    speed = 1.5;
+    speed = Math.random()*2+1;
+    size = (float)(speed*speed*speed);
     angle = (Math.random()*360);
   }//constructor end
   
