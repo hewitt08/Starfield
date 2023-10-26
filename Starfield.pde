@@ -57,7 +57,7 @@ class Particle{
     if((x>500)||(x<0)||(y>500)||(y<0)){
       x = 250;
       y = 250;
-      size = 2;
+      size = (float)(speed*speed*speed);
       angle = (Math.random()*360);
     }
   }
@@ -67,11 +67,26 @@ class OddballParticle extends Particle{
   OddballParticle(){
     x = 250;
     y = 250;
-    r = 255;
+    r = 200;
     g = 0;
     b = 0;
     size = 50;
-    speed = 1.5;
+    speed = Math.random()*2+1;
     angle = (Math.random()*360);
+  }
+  
+  void show(){
+    fill(r,g,b);
+    size = size*((dist(250,250,(float)x,(float)y)/400))+8;
+    ellipse((float)x, (float)y, size, size);
+  }
+  
+  void reset(){
+    if((x>500)||(x<0)||(y>500)||(y<0)){
+      x = 250;
+      y = 250;
+      size = 50;
+      angle = (Math.random()*360);
+    }
   }
 }
