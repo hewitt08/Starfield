@@ -4,15 +4,19 @@ void setup()
 {
   size(500,500);
   background(0);
+  noStroke();
   
-  field = new Particle[100];
+  field = new Particle[300];
   
   for(int i = 0; i < field.length; i++){
-    field[i] = new Particle(250,250);
+    field[i] = new Particle();
+  }
+  for(int i = field.length-10; i < field.length; i++){
+    field[i] = new OddballParticle();
   }
 }
 void draw(){
-  fill(0,0,0,20);
+  fill(0,0,0,10);
   rect(0,0,500,500);
   
   for(int i = 0; i < field.length; i++){
@@ -21,13 +25,15 @@ void draw(){
     field[i].reset();
   }
 }
-class Particle extends OddballParticle{
+
+class Particle{
   double x, y, angle, speed;
   int r, g, b;
   float size;
-  Particle(int X, int Y){
-    x = X;
-    y = Y;
+  
+  Particle(){
+    x = 250;
+    y = 250;
     r = 255;
     g = 255;
     b = 255;
@@ -57,7 +63,15 @@ class Particle extends OddballParticle{
   }
 }//particle class end
 
-class OddballParticle //inherits from Particle
-{
-  //your code here
+class OddballParticle extends Particle{
+  OddballParticle(){
+    x = 250;
+    y = 250;
+    r = 255;
+    g = 0;
+    b = 0;
+    size = 50;
+    speed = 1.5;
+    angle = (Math.random()*360);
+  }
 }
